@@ -80,6 +80,7 @@ public class TabScrollActivity extends AppCompatActivity {
                 int pos = tab.getPosition();
                 int top = anchorList.get(pos).getTop();
                 scrollView.smoothScrollTo(0, top);
+                lastPos=pos;
             }
 
             @Override
@@ -126,6 +127,7 @@ public class TabScrollActivity extends AppCompatActivity {
         if (lastPos != newPos) {
             //该方法不会触发tablayout 的onTabSelected 监听
             tabLayout.setScrollPosition(newPos, 0, true);
+            tabLayout.getTabAt(newPos).select();
         }
         lastPos = newPos;
     }
